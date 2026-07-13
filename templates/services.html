@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Premium Auto Glass Services in Salem | Vetrivel Glass{% endblock %}
+{% block content %}
+<section class="page-banner premium-page-banner services-banner">
+    <div class="page-banner-art"></div>
+    <div class="page-container page-banner-grid">
+        <div class="reveal">
+            <p class="section-label">OUR SERVICES</p>
+            <h1>Precision solutions for damaged automotive glass.</h1>
+            <p>Professional repair, replacement, doorstep coordination and insurance-support guidance for cars and commercial vehicles.</p>
+        </div>
+        <div class="banner-service-wheel reveal delay-one">
+            <div class="wheel-center">V</div>
+            <span class="wheel-dot d1"></span><span class="wheel-dot d2"></span><span class="wheel-dot d3"></span><span class="wheel-dot d4"></span>
+        </div>
+    </div>
+</section>
+
+<section class="premium-service-detail-section">
+    <div class="page-container">
+        <div class="section-heading reveal">
+            <p class="section-label dark-label">SERVICE PORTFOLIO</p>
+            <h2>Complete care across every glass position.</h2>
+            <p class="section-intro">Each service card explains the common requirement and how our team approaches it.</p>
+            <span class="heading-line"></span>
+        </div>
+        <div class="premium-service-description-grid">
+            {% set details = [
+                ('01','Windshield Repair','Eligible chips and minor cracks may be stabilised before they spread. Suitability depends on size, depth, position and edge distance.','windshield-repair.jpg'),
+                ('02','Windshield Replacement','For major cracks, impact damage and unsafe visibility, we support removal, preparation, adhesive application, installation and curing guidance.','windshield-replacement.jpg'),
+                ('03','Side and Door Glass','Broken side or door glass is carefully cleared and replaced, with attention to movement, channels and clean finishing.','side-glass.jpg'),
+                ('04','Rear Glass Replacement','Replacement support for rear windshields and hatch glasses, including attention to seals and demister connections where applicable.','rear-glass.jpg'),
+                ('05','Doorstep Service','Selected services may be completed at the customer location, depending on weather, workspace, vehicle and safety conditions.','door-glass.jpg'),
+                ('06','Insurance Assistance','We guide customers with damage information, estimates, photographs and documentation. Approval remains subject to insurer and policy conditions.','windshield-repair.jpg')
+            ] %}
+            {% for no, title, copy, image in details %}
+            <article class="premium-service-description-card reveal" {% if no == '06' %}id="insurance"{% endif %}>
+                <div class="service-detail-image"><img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ title }}"><span>{{ no }}</span></div>
+                <div class="service-detail-copy"><h3>{{ title }}</h3><p>{{ copy }}</p><a href="{{ url_for('contact') }}#enquiry">REQUEST THIS SERVICE →</a></div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="service-process-premium">
+    <div class="page-container service-process-grid">
+        <div class="process-copy reveal">
+            <p class="section-label">OUR PROCESS</p>
+            <h2>A professional service flow from enquiry to handover.</h2>
+            <p>Providing the correct vehicle details and photographs helps us respond more efficiently.</p>
+        </div>
+        <div class="vertical-process">
+            {% set process = [
+                ('01','Contact','Share vehicle make, model, year and damaged-glass position.'),
+                ('02','Assess','We review the damage and advise repair or replacement.'),
+                ('03','Confirm','Agree the service, location and available timing.'),
+                ('04','Complete','Receive fitting, curing and after-service guidance.')
+            ] %}
+            {% for no, title, copy in process %}
+            <article class="vertical-step reveal"><span>{{ no }}</span><div><h3>{{ title }}</h3><p>{{ copy }}</p></div></article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="insurance-premium-section">
+    <div class="page-container insurance-grid">
+        <div class="insurance-graphic reveal">
+            <div class="document-card back-card"></div>
+            <div class="document-card front-card">
+                <div class="doc-shield">◇</div>
+                <strong>Insurance<br>Assistance</strong>
+                <span>Estimate</span><span>Photos</span><span>Documents</span>
+            </div>
+        </div>
+        <div class="insurance-copy reveal delay-one">
+            <p class="section-label dark-label">INSURANCE SUPPORT</p>
+            <h2>Practical guidance through the claim-document process.</h2>
+            <p>We can help customers understand commonly requested damage information, photographs, estimates and coordination steps. Final claim acceptance, coverage and settlement are controlled by the insurer and policy terms.</p>
+            <a class="primary-button shine-button" href="{{ url_for('contact') }}#enquiry">ASK FOR ASSISTANCE</a>
+        </div>
+    </div>
+</section>
+
+<section class="inner-cta premium-inner-cta">
+    <div class="cta-pattern"></div>
+    <div class="page-container inner-cta-row">
+        <div><p class="section-label">GET A QUICK ESTIMATE</p><h2>Share your vehicle and damage details.</h2></div>
+        <a href="{{ url_for('contact') }}#enquiry">CONTACT US →</a>
+    </div>
+</section>
+{% endblock %}

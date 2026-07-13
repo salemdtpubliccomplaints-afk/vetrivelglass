@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% block title %}Vetrivel Glass | Premium Auto Glass Solutions in Salem{% endblock %}
+{% block content %}
+
+<section class="hero-section premium-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-glass-lines"></div>
+    <div class="hero-orb hero-orb-one"></div>
+    <div class="hero-orb hero-orb-two"></div>
+
+    <button class="slider-arrow arrow-left" type="button" aria-label="Previous slide">‹</button>
+    <button class="slider-arrow arrow-right" type="button" aria-label="Next slide">›</button>
+
+    <div class="page-container hero-inner">
+        <div class="hero-copy reveal">
+            <div class="hero-mini-badge"><span></span> SALEM'S AUTO GLASS SPECIALISTS</div>
+            <p class="section-label">CLEAR VISION. SAFE JOURNEY.</p>
+            <h1>Premium Auto Glass<br><em>Solutions</em></h1>
+            <p class="hero-description">Professional repair and replacement for windshields, side, door and rear glass—delivered with precision, speed and dependable support.</p>
+
+            <div class="hero-buttons">
+                <a class="primary-button shine-button" href="tel:+917358817353"><span>☎</span> CALL NOW</a>
+                <a class="secondary-button" href="https://wa.me/917358817353?text=Hello%20Vetrivel%20Glass,%20I%20need%20auto%20glass%20service." target="_blank" rel="noopener"><span>◉</span> WHATSAPP US</a>
+            </div>
+
+            <div class="hero-proof">
+                <div><strong>Premium</strong><span>Glass options</span></div>
+                <div><strong>Careful</strong><span>Installation</span></div>
+                <div><strong>Salem</strong><span>Local support</span></div>
+            </div>
+        </div>
+
+        <div class="hero-graphic-card reveal delay-one">
+            <div class="graphic-ring"></div>
+            <div class="glass-chip">
+                <span class="chip-line one"></span><span class="chip-line two"></span><span class="chip-line three"></span>
+            </div>
+            <span class="graphic-number">24/7</span>
+            <strong>Quick Enquiry Support</strong>
+            <p>Call or WhatsApp to share your vehicle and damage details.</p>
+            <a href="{{ url_for('contact') }}#enquiry">GET A QUOTE <span>→</span></a>
+        </div>
+    </div>
+
+    <div class="slider-dots" aria-hidden="true"><span class="selected"></span><span></span><span></span></div>
+</section>
+
+<section class="feature-panel premium-feature-panel" aria-label="Service highlights">
+    {% set highlights = [
+        ('shield', 'High Quality Glass', 'Reliable glass options selected for your vehicle'),
+        ('person', 'Expert Technicians', 'Careful preparation and professional fitting'),
+        ('door', 'Doorstep Service', 'Convenient service subject to job conditions'),
+        ('document', 'Insurance Support', 'Guidance for estimates and claim documents'),
+        ('clock', 'Quick Turnaround', 'Responsive scheduling and customer updates')
+    ] %}
+    {% for icon, title, copy in highlights %}
+    <article class="feature-item">
+        <span class="line-icon icon-{{ icon }}"></span>
+        <div><h3>{{ title }}</h3><p>{{ copy }}</p></div>
+    </article>
+    {% endfor %}
+</section>
+
+<section class="services-section premium-services" id="gallery">
+    <div class="section-heading reveal">
+        <p class="section-label dark-label">OUR PREMIUM SERVICES</p>
+        <h2>Precision care for every glass position.</h2>
+        <p class="section-intro">From small chips to complete glass replacement, every job begins with a careful assessment and clear recommendation.</p>
+        <span class="heading-line"></span>
+    </div>
+
+    <div class="service-grid premium-service-grid">
+        {% set services = [
+            ('windshield-repair.jpg', 'Windshield Repair', 'Repair eligible chips before they spread.', '01'),
+            ('windshield-replacement.jpg', 'Windshield Replacement', 'Safe removal, preparation and professional installation.', '02'),
+            ('side-glass.jpg', 'Side Glass Replacement', 'Restore security, visibility and smooth operation.', '03'),
+            ('rear-glass.jpg', 'Rear Glass Replacement', 'Careful replacement with finishing support.', '04'),
+            ('door-glass.jpg', 'Door Glass Replacement', 'Clean removal and correct glass fitting.', '05')
+        ] %}
+        {% for image, title, copy, number in services %}
+        <article class="service-card premium-service-card reveal">
+            <div class="service-image">
+                <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ title }}">
+                <span class="service-number">{{ number }}</span>
+                <div class="service-image-overlay"></div>
+            </div>
+            <div class="service-card-body">
+                <span class="service-icon">◇</span>
+                <h3>{{ title }}</h3>
+                <p>{{ copy }}</p>
+                <a href="{{ url_for('services') }}">EXPLORE SERVICE <span>→</span></a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="glass-showcase">
+    <div class="glass-showcase-pattern"></div>
+    <div class="page-container showcase-grid">
+        <div class="showcase-visual reveal">
+            <div class="windshield-frame">
+                <div class="windshield-shine"></div>
+                <div class="crack-mark">
+                    <i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <span class="inspection-point point-one"></span>
+                <span class="inspection-point point-two"></span>
+                <span class="inspection-label">Precision Inspection</span>
+            </div>
+        </div>
+        <div class="showcase-copy reveal delay-one">
+            <p class="section-label">REPAIR OR REPLACE?</p>
+            <h2>We recommend the right solution—not simply the biggest job.</h2>
+            <p>Damage size, position, depth and distance from the glass edge all affect whether a windshield can be repaired safely. Our team explains the practical option before work begins.</p>
+            <div class="showcase-checks">
+                <span>✓ Damage assessment</span>
+                <span>✓ Transparent recommendation</span>
+                <span>✓ Suitable glass selection</span>
+                <span>✓ Post-installation guidance</span>
+            </div>
+            <a class="premium-text-link" href="{{ url_for('contact') }}#enquiry">SEND DAMAGE DETAILS →</a>
+        </div>
+    </div>
+</section>
+
+<section class="why-section premium-why" id="why">
+    <div class="why-pattern"></div>
+    <div class="page-container why-premium-grid">
+        <div class="why-copy reveal">
+            <p class="section-label">WHY VETRIVEL GLASS</p>
+            <h2>Premium service is more than the glass itself.</h2>
+            <p>It is the way the damage is assessed, the fitting is prepared, the customer is informed and the vehicle is handed back.</p>
+            <a href="{{ url_for('about') }}" class="outline-gold-button">DISCOVER OUR APPROACH</a>
+        </div>
+        <div class="premium-stats">
+            <article class="stat-card reveal"><strong>01</strong><h3>Clear Communication</h3><p>Practical explanations from enquiry to completion.</p></article>
+            <article class="stat-card reveal delay-one"><strong>02</strong><h3>Quality Workmanship</h3><p>Careful preparation, sealing and finishing.</p></article>
+            <article class="stat-card reveal delay-two"><strong>03</strong><h3>Customer Convenience</h3><p>Phone, WhatsApp and doorstep coordination.</p></article>
+            <article class="stat-card reveal"><strong>04</strong><h3>Local Support</h3><p>Salem-based assistance when you need it.</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="process-section">
+    <div class="page-container">
+        <div class="section-heading reveal">
+            <p class="section-label dark-label">HOW IT WORKS</p>
+            <h2>A clear four-step service journey.</h2>
+            <span class="heading-line"></span>
+        </div>
+        <div class="process-line">
+            {% set steps = [
+                ('01', 'Share Details', 'Send vehicle information and damage photographs.'),
+                ('02', 'Assessment', 'We review repair or replacement suitability.'),
+                ('03', 'Schedule Service', 'Confirm location, timing and service requirement.'),
+                ('04', 'Safe Handover', 'Receive completion and care guidance.')
+            ] %}
+            {% for no, title, copy in steps %}
+            <article class="process-step reveal">
+                <div class="process-number">{{ no }}</div>
+                <h3>{{ title }}</h3>
+                <p>{{ copy }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="testimonial-section">
+    <div class="page-container testimonial-layout">
+        <div class="testimonial-title reveal">
+            <p class="section-label dark-label">CUSTOMER EXPERIENCE</p>
+            <h2>Professional support that feels simple.</h2>
+            <div class="rating-block"><strong>5.0</strong><span>★★★★★</span><small>Service-quality presentation</small></div>
+        </div>
+        <div class="testimonial-cards">
+            <blockquote class="premium-quote reveal">
+                <span class="quote-mark">“</span>
+                <p>The service experience is built around clear guidance, responsive communication and careful vehicle handling.</p>
+                <footer>Vetrivel Glass Service Promise</footer>
+            </blockquote>
+            <blockquote class="premium-quote featured-quote reveal delay-one">
+                <span class="quote-mark">“</span>
+                <p>Customers can share damage photos through WhatsApp and receive support before visiting the head office.</p>
+                <footer>Convenient Enquiry Process</footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<section class="quote-section premium-quote-section" id="quote">
+    <div class="quote-glow"></div>
+    <div class="page-container quote-layout">
+        <div class="quote-heading reveal">
+            <p class="section-label">GET A PREMIUM QUOTE</p>
+            <h2>Book your auto glass service.</h2>
+            <p>Share your vehicle and damage details. Our team will contact you with the suitable service option.</p>
+            <div class="direct-contact">
+                <a href="tel:+917358817353">☎ +91 73588 17353</a>
+                <a href="mailto:contact@vetrivelglass.com">✉ contact@vetrivelglass.com</a>
+            </div>
+        </div>
+
+        <form class="quote-form premium-form reveal delay-one" method="post" action="{{ url_for('enquire') }}">
+            <div class="form-title"><span>01</span><div><strong>Tell us about your vehicle</strong><small>We normally respond during business hours.</small></div></div>
+            <input name="name" placeholder="Your name" aria-label="Your name" required>
+            <input name="phone" placeholder="Phone number" aria-label="Phone number" required>
+            <input name="email" type="email" placeholder="Email address" aria-label="Email address">
+            <input name="vehicle" placeholder="Vehicle model" aria-label="Vehicle model">
+            <select name="service" aria-label="Select service" required>
+                <option value="">Select service</option>
+                <option>Windshield Repair</option>
+                <option>Windshield Replacement</option>
+                <option>Side Glass Replacement</option>
+                <option>Rear Glass Replacement</option>
+                <option>Door Glass Replacement</option>
+                <option>Insurance Assistance</option>
+            </select>
+            <textarea name="message" placeholder="Tell us about the damage" aria-label="Damage details"></textarea>
+            <button type="submit">SUBMIT ENQUIRY <span>→</span></button>
+        </form>
+    </div>
+</section>
+{% endblock %}

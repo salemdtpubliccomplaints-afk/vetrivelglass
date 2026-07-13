@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Contact Vetrivel Glass | Premium Auto Glass Service in Salem{% endblock %}
+{% block content %}
+<section class="page-banner premium-page-banner contact-banner">
+    <div class="page-banner-art"></div>
+    <div class="page-container page-banner-grid">
+        <div class="reveal">
+            <p class="section-label">CONTACT VETRIVEL GLASS</p>
+            <h1>Fast support starts with the right details.</h1>
+            <p>Send your vehicle model, year, damaged-glass position and a clear photograph for a faster initial response.</p>
+        </div>
+        <div class="contact-hero-card reveal delay-one">
+            <span>DIRECT LINE</span>
+            <a href="tel:+917358817353">73588 17353</a>
+            <small>Call or WhatsApp for service enquiries</small>
+        </div>
+    </div>
+</section>
+
+<section class="premium-contact-section" id="enquiry">
+    <div class="page-container contact-premium-grid">
+        <div class="contact-info-panel reveal">
+            <p class="section-label dark-label">HEAD OFFICE</p>
+            <h2>Visit, call or message our Salem team.</h2>
+            <p>Our head office is located in Suramangalam, near Jawager Mill. Contact us before visiting so the team can understand your vehicle-glass requirement.</p>
+
+            <div class="premium-contact-list">
+                <a href="tel:+917358817353"><span class="contact-icon">☎</span><div><small>PHONE</small><strong>+91 73588 17353</strong></div><b>→</b></a>
+                <a href="mailto:contact@vetrivelglass.com"><span class="contact-icon">✉</span><div><small>EMAIL</small><strong>contact@vetrivelglass.com</strong></div><b>→</b></a>
+                <a href="https://wa.me/917358817353" target="_blank" rel="noopener"><span class="contact-icon">◉</span><div><small>WHATSAPP</small><strong>Chat with Vetrivel Glass</strong></div><b>→</b></a>
+            </div>
+
+            <div class="office-address-card">
+                <span>HEAD OFFICE ADDRESS</span>
+                <p>Main Rd, near Jawager Mill,<br>Subramania Nagar, Suramangalam,<br>Salem, Tamil Nadu 636015</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Main+Rd+near+Jawager+Mill+Subramania+Nagar+Suramangalam+Salem+Tamil+Nadu+636015" target="_blank" rel="noopener">OPEN IN MAPS →</a>
+            </div>
+        </div>
+
+        <div class="contact-form-card premium-contact-form-card reveal delay-one">
+            <div class="form-card-header">
+                <span>GET A QUOTE</span>
+                <h3>Request a callback</h3>
+                <p>Fields marked as required help us identify the service.</p>
+            </div>
+            <form class="contact-form premium-contact-form" method="post" action="{{ url_for('enquire') }}">
+                <label><span>Your name *</span><input name="name" placeholder="Enter your full name" required></label>
+                <label><span>Phone number *</span><input name="phone" placeholder="Enter contact number" required></label>
+                <label><span>Email address</span><input name="email" type="email" placeholder="name@example.com"></label>
+                <label><span>Vehicle</span><input name="vehicle" placeholder="Make, model and year"></label>
+                <label class="full-field"><span>Required service *</span>
+                    <select name="service" required>
+                        <option value="">Choose a service</option>
+                        <option>Windshield Repair</option>
+                        <option>Windshield Replacement</option>
+                        <option>Side Glass Replacement</option>
+                        <option>Rear Glass Replacement</option>
+                        <option>Door Glass Replacement</option>
+                        <option>Doorstep Service</option>
+                        <option>Insurance Assistance</option>
+                        <option>Other Requirement</option>
+                    </select>
+                </label>
+                <label class="full-field"><span>Service location</span><input name="location" placeholder="Area / city"></label>
+                <label class="full-field"><span>Damage details</span><textarea name="message" placeholder="Describe the damage and preferred service time"></textarea></label>
+                <button class="full-field" type="submit">SUBMIT ENQUIRY <span>→</span></button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="location-visual-section">
+    <div class="page-container location-grid">
+        <div class="location-map reveal"><img src="{{ url_for('static', filename='images/salem-location.svg') }}" alt="Vetrivel Glass location illustration in Salem"></div>
+        <div class="location-copy reveal delay-one">
+            <p class="section-label dark-label">SERVING SALEM</p>
+            <h2>Local support from Suramangalam.</h2>
+            <p>Contact our team for automotive glass requirements across Salem and nearby areas. Service availability and doorstep coverage depend on the specific job and location.</p>
+            <div class="location-tags"><span>Suramangalam</span><span>Salem</span><span>Doorstep Coordination</span></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

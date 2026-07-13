@@ -1,0 +1,69 @@
+.site-brand{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    text-decoration:none;
+}
+
+.logo-icon{
+    font-size:72px;
+    font-weight:900;
+    color:#041b3d;
+    position:relative;
+    line-height:1;
+}
+
+.logo-icon::before{
+    content:"👑";
+    position:absolute;
+    top:-28px;
+    left:22px;
+    font-size:22px;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.logo-title{
+    font-family:Georgia, serif;
+    font-size:42px;
+    letter-spacing:12px;
+    color:#041b3d;
+}
+
+.logo-subtitle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    margin-top:8px;
+}
+
+.logo-subtitle span{
+    color:#041b3d;
+    letter-spacing:8px;
+    font-size:20px;
+}
+
+.line{
+    width:70px;
+    height:1px;
+    background:#d4a23a;
+}
+
+.nav-container{
+    min-height:105px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+@media (max-width:768px){
+    .logo-icon{font-size:48px;}
+    .logo-title{font-size:28px;letter-spacing:6px;}
+    .logo-subtitle span{font-size:14px;letter-spacing:4px;}
+    .line{width:35px;}
+}

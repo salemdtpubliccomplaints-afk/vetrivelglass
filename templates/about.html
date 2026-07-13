@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}About Vetrivel Glass | Premium Automotive Glass Care in Salem{% endblock %}
+{% block content %}
+<section class="page-banner premium-page-banner">
+    <div class="page-banner-art"></div>
+    <div class="page-container page-banner-grid">
+        <div class="reveal">
+            <p class="section-label">ABOUT VETRIVEL GLASS</p>
+            <h1>Built around clarity, craftsmanship and customer confidence.</h1>
+            <p>Vetrivel Glass provides professional automotive glass repair and replacement services from Suramangalam, Salem.</p>
+        </div>
+        <div class="banner-metric-card reveal delay-one">
+            <span>OUR PROMISE</span>
+            <strong>Clear advice.<br>Careful fitting.</strong>
+            <p>A professional service experience from first contact to vehicle handover.</p>
+        </div>
+    </div>
+</section>
+
+<section class="premium-story-section">
+    <div class="page-container story-grid">
+        <div class="story-graphic reveal">
+            <div class="story-glass">
+                <span class="story-year">V</span>
+                <div class="story-lines"></div>
+                <p>VETRIVEL GLASS<br><small>SALEM</small></p>
+            </div>
+            <div class="story-badge"><strong>Premium</strong><span>Customer care</span></div>
+        </div>
+        <div class="story-copy reveal delay-one">
+            <p class="section-label dark-label">WHO WE ARE</p>
+            <h2>Automotive glass service with a straightforward approach.</h2>
+            <p>We support customers with windshield repair, windshield replacement, side glass, rear glass and door glass requirements for different vehicle makes and models.</p>
+            <p>Our team begins by understanding the damage and explaining the available options. Repair is recommended when it is suitable; replacement is advised when glass condition, visibility or safety requires it.</p>
+            <p>Selected jobs may also be coordinated as doorstep services, and we provide practical guidance for insurance-related estimates and documentation.</p>
+            <a class="premium-text-link" href="{{ url_for('contact') }}#enquiry">TALK TO OUR TEAM →</a>
+        </div>
+    </div>
+</section>
+
+<section class="brand-values-section">
+    <div class="page-container">
+        <div class="section-heading reveal">
+            <p class="section-label">OUR SERVICE VALUES</p>
+            <h2>What premium service means to us.</h2>
+            <span class="heading-line"></span>
+        </div>
+        <div class="premium-value-grid">
+            {% set values = [
+                ('01', 'Safety First', 'Recommendations consider visibility, glass condition and safe vehicle use.'),
+                ('02', 'Professional Workmanship', 'Correct preparation, fitting, sealing and finishing matter at every stage.'),
+                ('03', 'Transparent Guidance', 'Customers receive a clear explanation of repair, replacement and service conditions.'),
+                ('04', 'Customer Convenience', 'Responsive phone and WhatsApp support, with doorstep coordination where suitable.')
+            ] %}
+            {% for no, title, copy in values %}
+            <article class="premium-value-card reveal">
+                <span>{{ no }}</span><div class="value-line-icon"></div><h3>{{ title }}</h3><p>{{ copy }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="premium-mission-section">
+    <div class="page-container mission-grid">
+        <div class="mission-copy reveal">
+            <p class="section-label">OUR MISSION</p>
+            <h2>To become a trusted automotive glass service name in Salem.</h2>
+        </div>
+        <div class="mission-points reveal delay-one">
+            <div><strong>01</strong><p>Offer dependable glass solutions for private and commercial vehicles.</p></div>
+            <div><strong>02</strong><p>Build customer trust through honest communication and responsible recommendations.</p></div>
+            <div><strong>03</strong><p>Develop a service experience that is modern, responsive and easy to access.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="inner-cta premium-inner-cta">
+    <div class="cta-pattern"></div>
+    <div class="page-container inner-cta-row">
+        <div><p class="section-label">NEED ASSISTANCE?</p><h2>Let us inspect your automotive glass requirement.</h2></div>
+        <a href="{{ url_for('contact') }}#enquiry">REQUEST A QUOTE →</a>
+    </div>
+</section>
+{% endblock %}

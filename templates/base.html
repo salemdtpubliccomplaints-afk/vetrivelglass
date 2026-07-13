@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Vetrivel Glass in Salem provides premium windshield repair, automotive glass replacement, doorstep service and insurance assistance.">
+    <meta name="theme-color" content="#061d34">
+    <title>{% block title %}Vetrivel Glass{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="page-container topbar-inner">
+        <div class="top-contact">
+            <a href="tel:+917358817353"><span class="top-icon">☎</span> +91 73588 17353</a>
+            <a href="mailto:contact@vetrivelglass.com"><span class="top-icon">✉</span> contact@vetrivelglass.com</a>
+        </div>
+        <div class="social-row">
+            <span>Follow us:</span>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="YouTube">▶</a>
+            <a href="https://wa.me/917358817353" target="_blank" rel="noopener" aria-label="WhatsApp">◉</a>
+        </div>
+    </div>
+</div>
+
+<header class="main-header">
+    <div class="page-container nav-container">
+        <a href="{{ url_for('home') }}" class="site-brand" aria-label="Vetrivel Glass home">
+            <span class="brand-symbol" aria-hidden="true">
+                <span class="brand-crown">♛</span>
+                <span class="brand-v-left"></span>
+                <span class="brand-v-right"></span>
+                <span class="brand-v-cut"></span>
+            </span>
+            <span class="brand-wording">
+                <strong>VETRIVEL</strong>
+                <span class="brand-subline"><i></i><b>GLASS</b><i></i></span>
+            </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav">
+            <a class="{{ 'active' if page == 'home' else '' }}" href="{{ url_for('home') }}">Home</a>
+            <a class="{{ 'active' if page == 'about' else '' }}" href="{{ url_for('about') }}">About Us</a>
+            <a class="{{ 'active' if page == 'services' else '' }}" href="{{ url_for('services') }}">Services <span class="chevron">⌄</span></a>
+            <a href="{{ url_for('home') }}#why">Why Us</a>
+            <a href="{{ url_for('services') }}#insurance">Insurance Assistance</a>
+            <a href="{{ url_for('home') }}#gallery">Gallery</a>
+            <a class="{{ 'active' if page == 'contact' else '' }}" href="{{ url_for('contact') }}">Contact Us</a>
+            <a class="nav-quote" href="{{ url_for('contact') }}#enquiry">GET A QUOTE</a>
+        </nav>
+    </div>
+</header>
+
+{% with msgs = get_flashed_messages(with_categories=true) %}
+    {% for category, message in msgs %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+<footer class="site-footer premium-footer">
+    <div class="footer-glow"></div>
+    <div class="page-container premium-footer-grid">
+        <div class="footer-about">
+            <a class="footer-brand-text" href="{{ url_for('home') }}">VETRIVEL <span>GLASS</span></a>
+            <p>Premium automotive glass repair and replacement in Salem, supported by careful workmanship, transparent guidance and responsive customer service.</p>
+            <div class="footer-badges">
+                <span>Quality Glass</span><span>Expert Fitting</span><span>Customer Care</span>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Explore</h4>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('services') }}">Our Services</a>
+            <a href="{{ url_for('services') }}#insurance">Insurance Support</a>
+            <a href="{{ url_for('contact') }}#enquiry">Request a Quote</a>
+        </div>
+        <div class="footer-links">
+            <h4>Contact</h4>
+            <a href="tel:+917358817353">+91 73588 17353</a>
+            <a href="mailto:contact@vetrivelglass.com">contact@vetrivelglass.com</a>
+            <p>Main Rd, near Jawager Mill, Subramania Nagar, Suramangalam, Salem, Tamil Nadu 636015</p>
+        </div>
+        <div class="footer-action">
+            <h4>Need immediate help?</h4>
+            <p>Send your vehicle model and a clear photo of the damaged glass.</p>
+            <a class="footer-whatsapp" href="https://wa.me/917358817353?text=Hello%20Vetrivel%20Glass,%20I%20need%20auto%20glass%20service." target="_blank" rel="noopener">CHAT ON WHATSAPP →</a>
+        </div>
+    </div>
+    <div class="page-container footer-copyright">
+        <span>© {{ current_year }} Vetrivel Glass. All rights reserved.</span>
+        <span>www.vetrivelglass.com</span>
+    </div>
+</footer>
+
+<a class="floating-button whatsapp-button"
+   href="https://wa.me/917358817353?text=Hello%20Vetrivel%20Glass,%20I%20need%20auto%20glass%20service."
+   target="_blank" rel="noopener" aria-label="WhatsApp">◉</a>
+<a class="floating-button call-button" href="tel:+917358817353" aria-label="Call Vetrivel Glass">☎</a>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
