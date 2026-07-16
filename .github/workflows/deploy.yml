@@ -1,6 +1,7 @@
-name: Deploy Flask app
+name: Test and Deploy Flask app
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -13,8 +14,63 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Verify GitHub secrets
+        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          [ -n "$VPS_HOST" ] || { echo "VPS_HOST is missing"; exit 1; }
+          [ -n "$VPS_USER" ] || { echo "VPS_USER is missing"; exit 1; }
+          [ -n "$VPS_SSH_KEY" ] || { echo "VPS_SSH_KEY is missing"; exit 1; }
+
+          echo "All secrets are present."
+
+      - name: Prepare and validate SSH key
+        shell: bash
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+
+          printf '%s\n' "$VPS_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/derived_public_key
+
+          echo "Private key format is valid."
+
+      - name: Test SSH connection
+        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          ssh \
+            -vv \
+            -i ~/.ssh/deploy_key \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=20 \
+            "$VPS_USER@$VPS_HOST" \
+            "echo 'SSH LOGIN SUCCESSFUL'"
+
+      - name: Test target directory
+        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=no \
+            "$VPS_USER@$VPS_HOST" \
+            "mkdir -p /var/www/vetrivelglass && test -w /var/www/vetrivelglass && echo 'TARGET DIRECTORY IS WRITABLE'"
+
       - name: Copy files to VPS
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -23,16 +79,20 @@ jobs:
           source: "."
           target: "/var/www/vetrivelglass"
           overwrite: true
+          debug: true
 
       - name: Restart app
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
+          debug: true
           script: |
             set -e
+
             cd /var/www/vetrivelglass
+
             systemctl restart vetrivelglass
             systemctl status vetrivelglass --no-pager
